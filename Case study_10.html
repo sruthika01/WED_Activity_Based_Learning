@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamHomes - Real Estate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Dream<span>Homes</span></h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#properties">Properties</a>
+        <a href="#compare">Compare</a>
+        <a href="#about">About</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h2>Find Your Dream Property</h2>
+    <p>Discover houses, apartments and rental properties.</p>
+
+    <div class="search-box">
+        <input type="text" id="location" placeholder="Enter location">
+
+        <select id="type">
+            <option value="all">All Properties</option>
+            <option value="house">House</option>
+            <option value="apartment">Apartment</option>
+            <option value="rental">Rental</option>
+        </select>
+
+        <select id="budget">
+            <option value="all">Any Budget</option>
+            <option value="5000000">Up to ₹50 Lakhs</option>
+            <option value="10000000">Up to ₹1 Crore</option>
+            <option value="20000000">Up to ₹2 Crores</option>
+        </select>
+
+        <select id="bedrooms">
+            <option value="all">Any Bedrooms</option>
+            <option value="1">1 BHK</option>
+            <option value="2">2 BHK</option>
+            <option value="3">3 BHK</option>
+        </select>
+
+        <button onclick="filterProperties()">Search</button>
+        <button onclick="resetFilters()">Reset</button>
+    </div>
+</section>
+
+<section id="properties">
+    <h2>Featured Properties</h2>
+    <p class="subtitle">Explore our latest property listings.</p>
+
+    <p id="result"></p>
+
+    <div class="property-grid">
+
+        <div class="property-card"
+             data-type="house" data-price="8500000"
+             data-location="hyderabad" data-bedrooms="3">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=700&q=80"
+                 alt="Luxury house">
+            <div class="details">
+                <h3>Luxury Family House</h3>
+                <h4>₹85 Lakhs</h4>
+                <p>📍 Gachibowli, Hyderabad</p>
+                <p>🛏 3 Bedrooms | 🛁 3 Bathrooms</p>
+                <p>🌳 Garden | 🚗 Parking</p>
+                <button onclick="showDetails('Luxury Family House', '₹85 Lakhs', 'Hyderabad', '3 Bedrooms, Garden, Parking')">View Details</button>
+            </div>
+        </div>
+
+        <div class="property-card"
+             data-type="apartment" data-price="6500000"
+             data-location="vijayawada" data-bedrooms="2">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80"
+                 alt="Modern apartment">
+            <div class="details">
+                <h3>Modern Apartment</h3>
+                <h4>₹65 Lakhs</h4>
+                <p>📍 Benz Circle, Vijayawada</p>
+                <p>🛏 2 Bedrooms | 🛁 2 Bathrooms</p>
+                <p>🏊 Swimming Pool | 🛡 Security</p>
+                <button onclick="showDetails('Modern Apartment', '₹65 Lakhs', 'Vijayawada', '2 Bedrooms, Swimming Pool, Security')">View Details</button>
+            </div>
+        </div>
+
+        <div class="property-card"
+             data-type="rental" data-price="18000"
+             data-location="kadapa" data-bedrooms="2">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=80"
+                 alt="Rental flat interior">
+            <div class="details">
+                <h3>Rental Flat</h3>
+                <h4>₹18,000/month</h4>
+                <p>📍 Proddatur, Kadapa</p>
+                <p>🛏 2 Bedrooms | 🛁 2 Bathrooms</p>
+                <p>🍳 Modular Kitchen | 🛒 Shops Nearby</p>
+                <button onclick="showDetails('Rental Flat', '₹18,000/month', 'Proddatur, Kadapa', '2 Bedrooms, Modular Kitchen')">View Details</button>
+            </div>
+        </div>
+
+        <div class="property-card"
+             data-type="house" data-price="12000000"
+             data-location="bangalore" data-bedrooms="3">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80"
+                 alt="Modern villa">
+            <div class="details">
+                <h3>Contemporary Villa</h3>
+                <h4>₹1.2 Crores</h4>
+                <p>📍 Whitefield, Bengaluru</p>
+                <p>🛏 3 Bedrooms | 🛁 3 Bathrooms</p>
+                <p>🌳 Garden | 🚗 Parking</p>
+                <button onclick="showDetails('Contemporary Villa', '₹1.2 Crores', 'Bengaluru', '3 Bedrooms, Garden, Parking')">View Details</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="compare">
+    <h2>Property Comparison</h2>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Property</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Bedrooms</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td>Luxury Family House</td>
+                <td>Hyderabad</td>
+                <td>House</td>
+                <td>3 BHK</td>
+                <td>₹85 Lakhs</td>
+            </tr>
+            <tr>
+                <td>Modern Apartment</td>
+                <td>Vijayawada</td>
+                <td>Apartment</td>
+                <td>2 BHK</td>
+                <td>₹65 Lakhs</td>
+            </tr>
+            <tr>
+                <td>Rental Flat</td>
+                <td>Kadapa</td>
+                <td>Rental</td>
+                <td>2 BHK</td>
+                <td>₹18,000/month</td>
+            </tr>
+            <tr>
+                <td>Contemporary Villa</td>
+                <td>Bengaluru</td>
+                <td>House</td>
+                <td>3 BHK</td>
+                <td>₹1.2 Crores</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <h2>About DreamHomes</h2>
+    <p>
+        DreamHomes helps visitors explore houses, apartments
+        and rental properties. Compare prices, locations,
+        bedrooms and amenities to find a suitable property.
+    </p>
+</section>
+
+<footer>
+    <h2>DreamHomes</h2>
+    <p>Your dream property starts here.</p>
+    <p>© 2026 DreamHomes. All rights reserved.</p>
+</footer>
+
+<script>
+function filterProperties() {
+    let location = document.getElementById("location")
+        .value.toLowerCase().trim();
+    let type = document.getElementById("type").value;
+    let budget = document.getElementById("budget").value;
+    let bedrooms = document.getElementById("bedrooms").value;
+
+    let cards = document.querySelectorAll(".property-card");
+    let count = 0;
+
+    cards.forEach(card => {
+        let matchesLocation =
+            card.dataset.location.includes(location);
+
+        let matchesType =
+            type === "all" || card.dataset.type === type;
+
+        let price = Number(card.dataset.price);
+        let matchesBudget =
+            budget === "all" ||
+            (card.dataset.type === "rental" && price <= 50000) ||
+            (card.dataset.type !== "rental" &&
+             price <= Number(budget));
+
+        let matchesBedrooms =
+            bedrooms === "all" ||
+            card.dataset.bedrooms === bedrooms;
+
+        let show = matchesLocation &&
+                   matchesType &&
+                   matchesBudget &&
+                   matchesBedrooms;
+
+        card.style.display = show ? "block" : "none";
+
+        if (show) count++;
+    });
+
+    document.getElementById("result").textContent =
+        count + " property/properties found.";
+}
+
+function resetFilters() {
+    document.getElementById("location").value = "";
+    document.getElementById("type").value = "all";
+    document.getElementById("budget").value = "all";
+    document.getElementById("bedrooms").value = "all";
+
+    document.querySelectorAll(".property-card").forEach(card => {
+        card.style.display = "block";
+    });
+
+    document.getElementById("result").textContent = "";
+}
+
+function showDetails(name, price, location, amenities) {
+    alert(
+        "Property: " + name +
+        "\nPrice: " + price +
+        "\nLocation: " + location +
+        "\nAmenities: " + amenities
+    );
+}
+</script>
+
+</body>
+</html>
